@@ -6,7 +6,7 @@ Pacote para geração de gráficos de diagnóstico para modelos de regressão, b
 
 ## Atualmente implementado
 
-#### Gráfico Quantil-Quantil
+##### Gráfico Quantil-Quantil
 
 Para fazer o gráfico quantil-quantil com banda de confiança para o modelo normal:
 
@@ -17,19 +17,19 @@ Identifique as observações que estão fora da banda com o comando:
 
     modelo %>% envel_norm() %>% idf_todas()
 
-#### Gráfico de influência (medida h)
+##### Gráfico de influência (medida h)
 
 Para fazer o gráfico da medida h use o comando:
 
     modelo %>% infl_norm()
 
-#### Gráfico da distância de Cook
+##### Gráfico da distância de Cook
 
 O gráfico da distância de Cook é feito usando:
 
     modelo %>% dcook_norm()
 
-#### Gráfico do resíduo padronizado pelo índice
+##### Gráfico do resíduo padronizado pelo índice
 
 Este gráfico pode ser gerado assim:
 
@@ -37,7 +37,7 @@ Este gráfico pode ser gerado assim:
     
 Obs: eu sei que este nome está horrível :(
 
-#### Gráfico do resíduo pelo valor ajustado
+##### Gráfico do resíduo pelo valor ajustado
 
 Este gráfico é gerado com a seguinte sequência de comandos:
 
