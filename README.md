@@ -52,6 +52,11 @@ As funções desse pacote são pensadas para que seja possível utlizar o operad
 de envelope e em seguida identificar a observação 5 com o comando:
 
     modelo %>% envel_norm() %>% idf_indice(5)
+  
+Também é possível identificar todas as observações que estão fora do intervalo
+permitido usando:
+
+    modelo %>% resva_norm() %>% idf_todas()
 
 ## Em desenvolvimento...
 
