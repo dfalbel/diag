@@ -29,6 +29,23 @@ O gráfico da distância de Cook é feito usando:
 
     modelo %>% dcook_norm()
 
+#### Gráfico do resíduo padronizado pelo índice
+
+Este gráfico pode ser gerado assim:
+
+    modelo %>% resind_norm()
+    
+Obs: eu sei que este nome está horrível :(
+
+#### Gráfico do resíduo pelo valor ajustado
+
+Este gráfico é gerado com a seguinte sequência de comandos:
+
+    modelo %>% resva_norm()
+    
+Obs: este nome também está bem ruim.
+
+
 ## Chaining
 
 As funções desse pacote são pensadas para que seja possível utlizar o operado `%>%`. Então, é possível criar o gráfico
