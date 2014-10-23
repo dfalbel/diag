@@ -14,8 +14,18 @@ idf_indice <- function(p, id, size = 5){
   
   stopifnot(is.ggplot(p), is.numeric(id)) # checa os argumentos
   
-  p + geom_text(aes(y = res), label = id, hjust = 0, 
-                vjust = 0, size = size, data = p$data[id,])
+  df <- p$data
+  
+  if("res" %in% colnames(df)){
+    df$y <- df$res
+  }
+  if("h" %in% colnames(df)){
+    df$y <- df$h
+  }
+  
+  
+  p + geom_text(aes(y = y), label = id, hjust = 0, 
+                vjust = 0, size = size, data = df[id,])
 }
 
 
@@ -35,8 +45,16 @@ idf_todas <- function(p, size = 5){
   
   df <- p$data
   df$ordem <- 1:nrow(df)
-  df <- df[df$res>df$lim.sup | df$res < df$lim.inf,]
   
-  p + geom_text(aes(y = res, label = ordem) , hjust = 0, 
+  if("res" %in% colnames(df)){
+    df <- df[df$res>df$lim.sup | df$res < df$lim.inf,]
+    df$y <- df$res
+  }
+  if("h" %in% colnames(df)){
+    df <- df[df$h>df$cut,]
+    df$y <- df$h
+  }
+  
+  p + geom_text(aes(y = y, label = ordem) , hjust = 0, 
                 size = size, vjust = 0, data = df)
 }
