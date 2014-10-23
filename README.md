@@ -6,10 +6,23 @@ Pacote para geração de gráficos de diagnóstico para modelos de regressão, b
 
 ## Atualmente implementado
 
-A única função implementada é a `envel_norm` que pode ser utilizada da seguinte forma:
+#### Gráfico Quantil-Quantil
+
+Para fazer o gráfico quantil-quantil com banda de confiança para o modelo normal:
 
     modelo <- lm(mpg ~ cyl + disp, data = mtcars)
-    envel_norm(modelo)
+    modelo %>% envel_norm()
+    
+Identifique as observações que estão fora da banda com o comando:
+
+    modelo %>% envel_norm() %>% idf_todas()
+
+#### Gráfico de influência (medida h)
+
+Para fazer o gráfico da medida h use o comando:
+
+    modelo %>% infl_norm()
+
 
 ## Chaining
 
