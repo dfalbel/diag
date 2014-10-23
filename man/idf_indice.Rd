@@ -15,7 +15,6 @@ Identificar observação pelo índice
 }
 \examples{
 modelo <- lm(mpg ~ cyl + disp, data = mtcars)
-envel_norm(modelo)
 modelo \%>\% envel_norm() \%>\% idf_indice(5)
 }
 
