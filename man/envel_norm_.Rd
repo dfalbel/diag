@@ -3,7 +3,7 @@
 \alias{envel_norm_}
 \title{Diagnóstico para o modelo normal}
 \usage{
-envel_norm_(fit.model, dados = fit.model$model)
+envel_norm_(fit.model)
 }
 \description{
 Diagnóstico para o modelo normal

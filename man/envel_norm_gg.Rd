@@ -3,7 +3,7 @@
 \alias{envel_norm_gg}
 \title{Envelope do qqplot para a distribuição normal usando ggplot2}
 \usage{
-envel_norm_gg(fit.model, dados = fit.model$model)
+envel_norm_gg(fit.model)
 }
 \description{
 Envelope do qqplot para a distribuição normal usando ggplot2
