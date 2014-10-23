@@ -3,12 +3,14 @@
 \alias{idf_indice}
 \title{Identificar observação pelo índice}
 \usage{
-idf_indice(p, id)
+idf_indice(p, id, size = 5)
 }
 \arguments{
 \item{p}{um gráfico de diagnóstico de resíduos}
 
 \item{id}{índice da observação que deseja marcar no gráfico}
+
+\item{size}{tamanho da letra do text, default = 5}
 }
 \description{
 Identificar observação pelo índice
@@ -16,5 +18,6 @@ Identificar observação pelo índice
 \examples{
 modelo <- lm(mpg ~ cyl + disp, data = mtcars)
 modelo \%>\% envel_norm() \%>\% idf_indice(5)
+modelo \%>\% envel_norm() \%>\% idf_indice(c(5,6))
 }
 
