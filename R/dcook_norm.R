@@ -30,7 +30,7 @@ dcook_norm_ <- function(modelo){
 dcook_norm_gg <- function(modelo){
   df <- dcook_norm_(modelo)
   
-  p <- ggplot(df, aes(x = ind, y = di)) + geom_point() + xlim(0,NA) +
+  p <- ggplot(df, aes(x = ind, y = di)) + geom_point() + ylim(0,NA) +
     geom_hline(aes(yintercept = cut), linetype = "dashed")
   
   return(p)

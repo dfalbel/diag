@@ -30,7 +30,7 @@ infl_norm_gg <- function(modelo){
   df <- infl_norm_(modelo)
   p <- ggplot(df, aes(x = ind, y = h)) + geom_point() + 
     geom_hline(yintercept = df$cut[1], linetype = "dashed") +
-    xlim(0, NA)
+    ylim(0, NA)
   return(p)
 }
 
