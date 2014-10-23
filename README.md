@@ -16,7 +16,7 @@ A única função implementada é a `envel_norm` que pode ser utilizada da segui
 As funções desse pacote são pensadas para que seja possível utlizar o operado `%>%`. Então, é possível criar o gráfico
 de envelope da forma a seguir:
 
-    modelo %>% envel_norm()
+    modelo %>% envel_norm() %>% idf_indice(5)
 
 ## Em desenvolvimento...
 
