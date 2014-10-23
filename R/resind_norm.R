@@ -37,7 +37,9 @@ resind_norm_gg <- function(modelo){
   
   p <- ggplot(df, aes(x = ordem, y = res)) + geom_point() + 
     geom_hline(aes(yintercept = lim.inf), linetype = "dashed") + 
-    geom_hline(aes(yintercept = lim.sup), linetype = "dashed")
+    geom_hline(aes(yintercept = lim.sup), linetype = "dashed") +
+    xlab("Índice") +
+    ylab("Resíduo Studentizado")
   
   return(p)
 }

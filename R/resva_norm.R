@@ -39,7 +39,9 @@ resva_norm_gg <- function(modelo){
   
   p <- ggplot(df, aes(x = va, y = res)) + geom_point() +
     geom_hline(aes(yintercept = lim.inf), linetype = "dashed") + 
-    geom_hline(aes(yintercept = lim.sup), linetype = "dashed")
+    geom_hline(aes(yintercept = lim.sup), linetype = "dashed") +
+    xlab("Valor Ajustado") +
+    ylab("Resíduos Studentizado")
   
   return(p)
 

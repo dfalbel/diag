@@ -64,7 +64,9 @@ envel_norm_gg <- function(fit.model){
   p <- ggplot2::ggplot(df, aes(x = quant)) + 
     geom_ribbon(aes(ymin = lim.inf, ymax = lim.sup), alpha = 0.3) +
     geom_line(aes(y = media), linetype = "dashed") + 
-    geom_point(aes(y = res))
+    geom_point(aes(y = res)) + 
+    xlab("Quantil da N(0,1)") +
+    ylab("Residuo Studentizado")
   return(p)
 }
 
