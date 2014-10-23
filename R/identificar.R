@@ -22,6 +22,9 @@ idf_indice <- function(p, id, size = 5){
   if("h" %in% colnames(df)){
     df$y <- df$h
   }
+  if("di" %in% colnames(df)){
+    df$y <- df$di
+  }
   
   
   p + geom_text(aes(y = y), label = id, hjust = 0, 
