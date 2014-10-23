@@ -17,7 +17,8 @@ dcook_norm_ <- function(modelo){
   
   df <- data.frame(
     ind = 1:length(di),
-    di = di
+    di = di,
+    cut = 4/length(di)
     )
   return(df)
 }
@@ -29,7 +30,8 @@ dcook_norm_ <- function(modelo){
 dcook_norm_gg <- function(modelo){
   df <- dcook_norm_(modelo)
   
-  p <- ggplot(df, aes(x = ind, y = di)) + geom_point() + xlim(0,NA)
+  p <- ggplot(df, aes(x = ind, y = di)) + geom_point() + xlim(0,NA) +
+    geom_hline(aes(yintercept = cut))
   
   return(p)
 }

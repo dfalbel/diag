@@ -54,6 +54,10 @@ idf_todas <- function(p, size = 5){
     df <- df[df$h>df$cut,]
     df$y <- df$h
   }
+  if("di" %in% colnames(df)){
+    df <- df[df$di>df$cut,]
+    df$y <- df$di
+  }
   
   p + geom_text(aes(y = y, label = ordem) , hjust = 0, 
                 size = size, vjust = 0, data = df)
