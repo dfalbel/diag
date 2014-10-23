@@ -13,6 +13,6 @@ Gráfico do índice pelo resíduo padronizado
 }
 \examples{
 modelo <- lm(mpg ~ cyl + disp, data = mtcars)
-modelo \%>\% infl_norm()
+modelo \%>\% resind_norm()
 }
 

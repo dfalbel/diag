@@ -48,7 +48,7 @@ resind_norm_gg <- function(modelo){
 #'
 #' @examples
 #' modelo <- lm(mpg ~ cyl + disp, data = mtcars)
-#' modelo %>% infl_norm()
+#' modelo %>% resind_norm()
 #'
 #'
 #' @export
