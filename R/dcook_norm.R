@@ -31,7 +31,7 @@ dcook_norm_gg <- function(modelo){
   df <- dcook_norm_(modelo)
   
   p <- ggplot(df, aes(x = ind, y = di)) + geom_point() + xlim(0,NA) +
-    geom_hline(aes(yintercept = cut))
+    geom_hline(aes(yintercept = cut), linetype = "dashed")
   
   return(p)
 }
@@ -44,7 +44,7 @@ dcook_norm_gg <- function(modelo){
 #' modelo <- lm(mpg ~ cyl + disp, data = mtcars)
 #' modelo %>% dcook_norm()
 #'
-#'
+#' @export
 dcook_norm <- function(modelo){
   dcook_norm_gg(modelo)
 }
