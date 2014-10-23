@@ -3,4 +3,5 @@
 export(envel_norm)
 export(idf_indice)
 export(idf_todas)
+export(infl_norm)
 import(magrittr)
