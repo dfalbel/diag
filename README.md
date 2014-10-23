@@ -27,7 +27,7 @@ Para fazer o gráfico da medida h use o comando:
 ## Chaining
 
 As funções desse pacote são pensadas para que seja possível utlizar o operado `%>%`. Então, é possível criar o gráfico
-de envelope da forma a seguir:
+de envelope e em seguida identificar a observação 5 com o comando:
 
     modelo %>% envel_norm() %>% idf_indice(5)
 
