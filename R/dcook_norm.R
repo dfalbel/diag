@@ -39,11 +39,15 @@ dcook_norm_gg <- function(modelo){
 #' Gráfico da distância de Cook para o modelo normal
 #'
 #' @param modelo modelo ajustado
+#' 
+#' @details
+#' A linha tracejada representa o corte proposto por Bollen, Kenneth et al de 
+#' 4/n em que n é o número de observações.
 #'
 #' @examples
 #' modelo <- lm(mpg ~ cyl + disp, data = mtcars)
 #' modelo %>% dcook_norm()
-#'
+#' 
 #' @export
 dcook_norm <- function(modelo){
   dcook_norm_gg(modelo)

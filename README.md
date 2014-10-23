@@ -23,6 +23,11 @@ Para fazer o gráfico da medida h use o comando:
 
     modelo %>% infl_norm()
 
+#### Gráfico da distância de Cook
+
+O gráfico da distância de Cook é feito usando:
+
+    modelo %>% dcook_norm()
 
 ## Chaining
 

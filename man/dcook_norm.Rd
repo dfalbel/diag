@@ -11,6 +11,10 @@ dcook_norm(modelo)
 \description{
 Gráfico da distância de Cook para o modelo normal
 }
+\details{
+A linha tracejada representa o corte proposto por Bollen, Kenneth et al de
+4/n em que n é o número de observações.
+}
 \examples{
 modelo <- lm(mpg ~ cyl + disp, data = mtcars)
 modelo \%>\% dcook_norm()
