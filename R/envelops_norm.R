@@ -3,7 +3,7 @@
 #'
 #'
 #'
-envel_norm_ <- function(fit.model, dados = fit.model$model){
+envel_norm_ <- function(fit.model){
   X <- model.matrix(fit.model)
   n <- nrow(X)
   p <- ncol(X)
@@ -35,11 +35,11 @@ envel_norm_ <- function(fit.model, dados = fit.model$model){
   faixa <- range(tsi,e1,e2)
   
   df <- data.frame(
-    media = med,
-    lim.inf = e1,
-    lim.sup = e2,
+    media = sort(med)[rank(tsi)],
+    lim.inf = sort(e1)[rank(tsi)],
+    lim.sup = sort(e2)[rank(tsi)],
     res = tsi,
-    quant = qqnorm(med, plot.it = F)$x
+    quant = qqnorm(tsi, plot.it = F)$x
     )
   
   return(df)
@@ -59,21 +59,20 @@ envel_norm_ <- function(fit.model, dados = fit.model$model){
 #' Envelope do qqplot para a distribuição normal usando ggplot2
 #'
 #'
-envel_norm_gg <- function(fit.model, dados = fit.model$model){
-  df <- envel_norm_(fit.model, dados)
+envel_norm_gg <- function(fit.model){
+  df <- envel_norm_(fit.model)
   p <- ggplot2::ggplot(df, aes(x = quant)) + 
     geom_ribbon(aes(ymin = lim.inf, ymax = lim.sup), alpha = 0.3) +
     geom_line(aes(y = media), linetype = "dashed") + 
-    geom_point(aes(y = sort(res)))
+    geom_point(aes(y = res))
   return(p)
 }
 
 
-#' Gráfico Quantil-Quanntil com envelope.
+#' Gráfico Quantil-Quantil com envelope.
 #'
 #' @param modelo modelo normal ajustado utilizando o comando lm
-#' @param dados dados utilizados para ajustar o modelo, se não for especificado
-#' o programa utilizará modelo$model
+#' 
 #'
 #' @examples
 #' modelo <- lm(mpg ~ cyl + disp, data = mtcars)
@@ -83,7 +82,7 @@ envel_norm_gg <- function(fit.model, dados = fit.model$model){
 #' @import magrittr
 #'
 #' @export
-envel_norm <- function(modelo, dados = fit.model$model){
-  envel_norm_gg(modelo, dados)
+envel_norm <- function(modelo){
+  envel_norm_gg(modelo)
 }
 
