@@ -5,25 +5,33 @@
 #'
 #'
 #'
-envel_bino_ <- function(fit.model, link = "log"){
+envel_pois_ <- function(fit.model, link = "log"){
   
   X <- model.matrix(fit.model)
-  k <- nrow(X)
-  e <- matrix(0,k,100)
-  tot <- numeric(k)
+  n <- nrow(X)
+  p <- ncol(X)
   w <- fit.model$weights
   W <- diag(w)
   H <- solve(t(X)%*%W%*%X)
   H <- sqrt(W)%*%X%*%H%*%t(X)%*%sqrt(W)
   h <- diag(H)
-  td <- sort(resid(fit.model, type="deviance")/sqrt(1-h))
+  td <- resid(fit.model,type="deviance")/sqrt((1-h))
+  e <- matrix(0,n,100)
   #
-  e <- calcula_e_bino(fit.model)
+  for(i in 1:100){
+    nresp <- rpois(n, fitted(fit.model))
+    fit <- glm(nresp ~ X, family=poisson(link = link))
+    w <- fit$weights
+    W <- diag(w)
+    H <- solve(t(X)%*%W%*%X)
+    H <- sqrt(W)%*%X%*%H%*%t(X)%*%sqrt(W)
+    h <- diag(H)
+    e[,i] <- sort(resid(fit,type="deviance")/sqrt(1-h))}
   #
-  e1 <- numeric(k)
-  e2 <- numeric(k)
+  e1 <- numeric(n)
+  e2 <- numeric(n)
   #
-  for(i in 1:k){
+  for(i in 1:n){
     eo <- sort(e[i,])
     e1[i] <- (eo[2]+eo[3])/2
     e2[i] <- (eo[97]+eo[98])/2}
