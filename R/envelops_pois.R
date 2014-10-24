@@ -5,7 +5,7 @@
 #'
 #'
 #'
-envel_bino_ <- function(fit.model, link = "log"){
+envel_pois_ <- function(fit.model){
   
   X <- model.matrix(fit.model)
   k <- nrow(X)
@@ -18,7 +18,7 @@ envel_bino_ <- function(fit.model, link = "log"){
   h <- diag(H)
   td <- sort(resid(fit.model, type="deviance")/sqrt(1-h))
   #
-  e <- calcula_e_bino(fit.model)
+  e <- calcula_e_pois(fit.model)
   #
   e1 <- numeric(k)
   e2 <- numeric(k)
@@ -46,8 +46,8 @@ envel_bino_ <- function(fit.model, link = "log"){
 #' Envelope do qqplot para a distribuição poisson usando ggplot2
 #'
 #'
-envel_pois_gg <- function(modelo, link="log"){
-  df <- envel_pois_(modelo, link)
+envel_pois_gg <- function(modelo){
+  df <- envel_pois_(modelo)
   p <- ggplot2::ggplot(df, aes(x = quant)) + 
     geom_ribbon(aes(ymin = lim.inf, ymax = lim.sup), alpha = 0.3) +
     geom_line(aes(y = media), linetype = "dashed") + 
@@ -61,7 +61,7 @@ envel_pois_gg <- function(modelo, link="log"){
 #' Gráfico Quantil-Quantil com envelope para a distribuição Poisson.
 #'
 #' @param modelo modelo normal ajustado 
-#' @param link ligacao utilizada no modelo, default é "log".
+#' 
 #'
 #' @examples
 #' counts <- c(18,17,15,20,10,20,25,13,12)
@@ -73,7 +73,7 @@ envel_pois_gg <- function(modelo, link="log"){
 #' @import magrittr
 #'
 #' @export
-envel_pois <- function(modelo, link= "log"){
-  envel_pois_gg(modelo, link)
+envel_pois <- function(modelo){
+  envel_pois_gg(modelo)
 }
 

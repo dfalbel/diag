@@ -5,7 +5,7 @@
 #'
 #'
 #'
-envel_gamma_ <- function(fit.model, link = "log"){
+envel_gamma_ <- function(fit.model){
   X <- model.matrix(fit.model)
   n <- nrow(X)
   p <- ncol(X)
@@ -18,20 +18,7 @@ envel_gamma_ <- function(fit.model, link = "log"){
   fi <- (n-p)/sum((ro/(fitted(fit.model)))^ 2)
   td <- resid(fit.model,type="deviance")*sqrt(fi/(1-h))
   #
-  e <- matrix(0,n,100)
-  #
-  for(i in 1:100){
-    resp <- rgamma(n,fi)
-    resp <- (fitted(fit.model)/fi)*resp
-    fit <- glm(resp ~ X, family=Gamma(link=link))
-    w <- fit$weights
-    W <- diag(w)
-    H <- solve(t(X)%*%W%*%X)
-    H <- sqrt(W)%*%X%*%H%*%t(X)%*%sqrt(W)
-    h <- diag(H)
-    ro <- resid(fit,type="response")
-    phi <- (n-p)/sum((ro/(fitted(fit)))^ 2)
-    e[,i] <- sort(resid(fit,type="deviance")*sqrt(phi/(1-h)))}
+  e <- calcula_e_gamma(modelo = fit.model)
   #
   e1 <- numeric(n)
   e2 <- numeric(n)
@@ -59,8 +46,8 @@ envel_gamma_ <- function(fit.model, link = "log"){
 #' Envelope do qqplot para a distribuição gamma usando ggplot2
 #'
 #'
-envel_gamma_gg <- function(modelo, link="log"){
-  df <- envel_gamma_(modelo, link)
+envel_gamma_gg <- function(modelo){
+  df <- envel_gamma_(modelo)
   p <- ggplot2::ggplot(df, aes(x = quant)) + 
     geom_ribbon(aes(ymin = lim.inf, ymax = lim.sup), alpha = 0.3) +
     geom_line(aes(y = media), linetype = "dashed") + 
@@ -74,7 +61,7 @@ envel_gamma_gg <- function(modelo, link="log"){
 #' Gráfico Quantil-Quantil com envelope para a distribuição Gamma.
 #'
 #' @param modelo modelo normal ajustado 
-#' @param link ligacao utilizada no modelo, default é "log".
+#' 
 #'
 #' @examples
 #' clotting <- data.frame(
@@ -88,7 +75,7 @@ envel_gamma_gg <- function(modelo, link="log"){
 #' @import magrittr
 #'
 #' @export
-envel_gamma <- function(modelo, link= "log"){
-  envel_gamma_gg(modelo, link)
+envel_gamma <- function(modelo){
+  envel_gamma_gg(modelo)
 }
 
