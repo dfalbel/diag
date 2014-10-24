@@ -7,6 +7,8 @@ envel_gamma(modelo, link = "log")
 }
 \arguments{
 \item{modelo}{modelo normal ajustado}
+
+\item{link}{ligacao utilizada no modelo, default é "log".}
 }
 \description{
 Gráfico Quantil-Quantil com envelope para a distribuição Gamma.

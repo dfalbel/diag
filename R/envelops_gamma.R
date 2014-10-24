@@ -74,7 +74,7 @@ envel_gamma_gg <- function(modelo, link="log"){
 #' Gráfico Quantil-Quantil com envelope para a distribuição Gamma.
 #'
 #' @param modelo modelo normal ajustado 
-#' 
+#' @param link ligacao utilizada no modelo, default é "log".
 #'
 #' @examples
 #' clotting <- data.frame(
