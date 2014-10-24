@@ -3,6 +3,7 @@
 export(dcook_norm)
 export(envel_gamma)
 export(envel_norm)
+export(envel_pois)
 export(idf_indice)
 export(idf_todas)
 export(infl_norm)
