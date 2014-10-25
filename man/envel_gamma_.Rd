@@ -4,7 +4,7 @@
 \title{Data frame para o grafico quantil quantil com banda de confiança para o modelo
 gama}
 \usage{
-envel_gamma_(fit.model, link = "log")
+envel_gamma_(fit.model)
 }
 \description{
 Data frame para o grafico quantil quantil com banda de confiança para o modelo

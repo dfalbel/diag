@@ -26,7 +26,8 @@ envel_gamma_ <- function(fit.model){
   for(i in 1:n){
     eo <- sort(e[i,])
     e1[i] <- (eo[2]+eo[3])/2
-    e2[i] <- (eo[97]+eo[98])/2}
+    e2[i] <- (eo[97]+eo[98])/2
+  }
   #
   med <- apply(e,1,mean)
   faixa <- range(td,e1,e2)

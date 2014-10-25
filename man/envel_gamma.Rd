@@ -3,12 +3,10 @@
 \alias{envel_gamma}
 \title{Gráfico Quantil-Quantil com envelope para a distribuição Gamma.}
 \usage{
-envel_gamma(modelo, link = "log")
+envel_gamma(modelo)
 }
 \arguments{
 \item{modelo}{modelo normal ajustado}
-
-\item{link}{ligacao utilizada no modelo, default é "log".}
 }
 \description{
 Gráfico Quantil-Quantil com envelope para a distribuição Gamma.

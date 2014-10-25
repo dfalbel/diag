@@ -3,7 +3,7 @@
 \alias{envel_gamma_gg}
 \title{Envelope do qqplot para a distribuição gamma usando ggplot2}
 \usage{
-envel_gamma_gg(modelo, link = "log")
+envel_gamma_gg(modelo)
 }
 \description{
 Envelope do qqplot para a distribuição gamma usando ggplot2
