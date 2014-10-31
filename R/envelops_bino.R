@@ -56,16 +56,16 @@ envel_bino_gg <- function(modelo){
 }
 
 
-#' Gráfico Quantil-Quantil com envelope para a distribuição Poisson.
+#' Gráfico Quantil-Quantil com envelope para a distribuição Binomial.
 #'
 #' @param modelo modelo normal ajustado 
 #' 
 #'
 #' @examples
-#' counts <- c(18,17,15,20,10,20,25,13,12)
-#' outcome <- gl(3,1,9)
-#' treatment <- gl(3,3)
-#' modelo <- glm(counts ~ outcome + treatment, family = poisson())
+#' cuse <- read.table("http://data.princeton.edu/wws509/datasets/cuse.dat", 
+#'     header=TRUE)
+#' modelo <- glm(cbind(using, notUsing) ~age + education + wantsMore , 
+#'                  family = binomial, data = cuse)
 #' modelo %>% envel_bino()
 #' 
 #' @import magrittr
